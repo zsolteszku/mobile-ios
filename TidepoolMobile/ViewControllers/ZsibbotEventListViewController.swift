@@ -72,6 +72,11 @@ extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDe
         return val
     }
     
+    func zsibbotViewDidLoad() {
+        addPickerViewPresenterAsSubview()
+        hideKeyboardWhenTappedAround()
+    }
+    
     func addPickerViewPresenterAsSubview() {
         view.addSubview(pickerViewPresenter)
     }

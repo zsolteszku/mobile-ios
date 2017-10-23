@@ -92,7 +92,7 @@ class EventListViewController: BaseUIViewController, ENSideMenuDelegate, NoteAPI
         // Note: one-time check to show first time healthKit connect tip. This needs to be shown first, before other first time screens, so check for it here. If this is up, the other screens will be deferred...
         firstTimeHealthKitConnectCheck()
         
-        self.addPickerViewPresenterAsSubview()
+        self.zsibbotViewDidLoad()
     }
    
     private var appIsForeground: Bool = true
@@ -198,6 +198,7 @@ class EventListViewController: BaseUIViewController, ENSideMenuDelegate, NoteAPI
     }
     
     @IBAction func toggleSideMenu(_ sender: AnyObject) {
+        self.zsibbotDismissKeyboard()
         APIConnector.connector().trackMetric("Clicked Hamburger (Home Screen)")
         toggleSideMenuView()
     }
