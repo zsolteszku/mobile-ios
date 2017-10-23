@@ -114,7 +114,11 @@ extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDe
             guard let strongSelf = self else {
                 return
             }
-            strongSelf.originalNavBarRightButtonHandler(sender)
+            switch(value) {
+            case .Note: strongSelf.originalNavBarRightButtonHandler(sender)
+            default:
+                fatalError("ZsibbotEventType(\(value.rawValue) View is not yet implemented.")
+            }
         }
     }
 }
