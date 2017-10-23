@@ -91,6 +91,8 @@ class EventListViewController: BaseUIViewController, ENSideMenuDelegate, NoteAPI
         
         // Note: one-time check to show first time healthKit connect tip. This needs to be shown first, before other first time screens, so check for it here. If this is up, the other screens will be deferred...
         firstTimeHealthKitConnectCheck()
+        
+        self.addPickerViewPresenterAsSubview()
     }
    
     private var appIsForeground: Bool = true
@@ -277,6 +279,16 @@ class EventListViewController: BaseUIViewController, ENSideMenuDelegate, NoteAPI
     //
     
     @IBAction func navBarRightButtonHandler(_ sender: Any) {
+        self.presentPickerView() { [weak self] (value: String) -> Void in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.originalNavBarRightButtonHandler()
+        }
+        
+    }
+    
+    func originalNavBarRightButtonHandler() {
         if APIConnector.connector().alertIfNetworkIsUnreachable() {
             return
         }
