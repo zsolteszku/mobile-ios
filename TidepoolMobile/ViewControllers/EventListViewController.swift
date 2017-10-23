@@ -280,16 +280,10 @@ class EventListViewController: BaseUIViewController, ENSideMenuDelegate, NoteAPI
     //
     
     @IBAction func navBarRightButtonHandler(_ sender: Any) {
-        self.presentPickerView() { [weak self] (value: ZsibbotEventType) -> Void in
-            guard let strongSelf = self else {
-                return
-            }
-            strongSelf.originalNavBarRightButtonHandler()
-        }
-        
+        self.zsibbotNavBarRightButtonHandler(sender)
     }
     
-    func originalNavBarRightButtonHandler() {
+    func originalNavBarRightButtonHandler(_ sender: Any) {
         if APIConnector.connector().alertIfNetworkIsUnreachable() {
             return
         }

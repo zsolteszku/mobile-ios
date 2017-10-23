@@ -18,6 +18,7 @@ private typealias ZsibbotEventListViewController = EventListViewController
 extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     enum ZsibbotEventType: String {
+        case Note
         case Meal
         case MealType
         
@@ -25,7 +26,8 @@ extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDe
         
         private static func fetchAll() -> [ZsibbotEventType] {
             var allValues: [ZsibbotEventType] = []
-            switch (ZsibbotEventType.Meal) {
+            switch (ZsibbotEventType.Note) {
+                case .Note: allValues.append(.Note); fallthrough
                 case .Meal: allValues.append(.Meal); fallthrough
                 case .MealType: allValues.append(.MealType)
             }
@@ -105,5 +107,14 @@ extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDe
     func presentPickerView(completitionHandler: @escaping (ZsibbotEventType) -> Void) {
         pickerViewPresenterAction = completitionHandler
         presentPickerView()
+    }
+    
+    func zsibbotNavBarRightButtonHandler(_ sender: Any) {
+        self.presentPickerView() { [weak self] (value: ZsibbotEventType) -> Void in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.originalNavBarRightButtonHandler(sender)
+        }
     }
 }
