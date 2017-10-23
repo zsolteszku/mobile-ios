@@ -279,7 +279,7 @@ class EventListViewController: BaseUIViewController, ENSideMenuDelegate, NoteAPI
     //
     
     @IBAction func navBarRightButtonHandler(_ sender: Any) {
-        self.presentPickerView() { [weak self] (value: String) -> Void in
+        self.presentPickerView() { [weak self] (value: ZsibbotEventType) -> Void in
             guard let strongSelf = self else {
                 return
             }

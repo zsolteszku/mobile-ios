@@ -14,7 +14,24 @@ struct AssociatedKeys {
     static var pickerViewPresenterAction: UInt8 = 0
 }
 
-extension EventListViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+private typealias ZsibbotEventListViewController = EventListViewController
+extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    enum ZsibbotEventType: String {
+        case Meal
+        case MealType
+        
+        static let All: [ZsibbotEventType] = ZsibbotEventType.fetchAll()
+        
+        private static func fetchAll() -> [ZsibbotEventType] {
+            var allValues: [ZsibbotEventType] = []
+            switch (ZsibbotEventType.Meal) {
+                case .Meal: allValues.append(.Meal); fallthrough
+                case .MealType: allValues.append(.MealType)
+            }
+            return allValues
+        }
+    }
     
     private var pickerViewPresenter: ZsibbotPickerViewPresenter {
         get {
@@ -27,9 +44,9 @@ extension EventListViewController: UIPickerViewDataSource, UIPickerViewDelegate 
         }
     }
     
-    private static let dataModel: [String] = ["Food", "FoodType"]
+    private static let dataModel: [ZsibbotEventType] = ZsibbotEventType.All
     
-    private var pickerViewPresenterAction: ((String) -> Void)? {
+    private var pickerViewPresenterAction: ((ZsibbotEventType) -> Void)? {
         get {
             return getStoredProperty(&AssociatedKeys.pickerViewPresenterAction)
         }
@@ -46,7 +63,7 @@ extension EventListViewController: UIPickerViewDataSource, UIPickerViewDelegate 
             guard let strongSelf = self else {
                 return
             }
-            let res = EventListViewController.dataModel[val.currentlySelectedRow]
+            let res = ZsibbotEventType.All[val.currentlySelectedRow]
             strongSelf.pickerViewPresenterAction?(res)
             strongSelf.pickerViewPresenterAction = nil
             val.hidePicker()
@@ -70,7 +87,7 @@ extension EventListViewController: UIPickerViewDataSource, UIPickerViewDelegate 
     // MARK: - UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return EventListViewController.dataModel[row]
+        return ZsibbotEventType.All[row].rawValue
     }
     
     func presentPickerView() {
@@ -79,7 +96,7 @@ extension EventListViewController: UIPickerViewDataSource, UIPickerViewDelegate 
         pickerViewPresenter.showPicker()
     }
     
-    func presentPickerView(completitionHandler: @escaping (String) -> Void) {
+    func presentPickerView(completitionHandler: @escaping (ZsibbotEventType) -> Void) {
         pickerViewPresenterAction = completitionHandler
         presentPickerView()
     }
