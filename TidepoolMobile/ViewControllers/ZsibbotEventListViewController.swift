@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct AssociatedKeys {
+fileprivate struct AssociatedKeys {
     static var pickerViewPresenter: UInt8 = 0
     static var pickerViewPresenterAction: UInt8 = 0
 }
