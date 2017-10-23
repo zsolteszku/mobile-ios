@@ -57,9 +57,10 @@ extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDe
     
     private func createPickerViewPresenter() -> ZsibbotPickerViewPresenter {
         let val = ZsibbotPickerViewPresenter()
+        val.tintColor = view.tintColor
         val.pickerDelegate = self
         val.pickerDataSource = self
-        val.selectButtonAction = { [weak self] () -> Void in
+        val.doneButtonAction = { [weak self] () -> Void in
             guard let strongSelf = self else {
                 return
             }

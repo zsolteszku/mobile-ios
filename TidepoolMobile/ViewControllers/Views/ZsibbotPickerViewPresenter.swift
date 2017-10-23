@@ -19,7 +19,7 @@ class ZsibbotPickerViewPresenter: UITextField {
     init() {
         super.init(frame: CGRect.zero)
         inputView = pickerView
-        inputAccessoryView = pickerInputAccessoryView
+        inputAccessoryView = toolBar
     }
     
     // MARK: - Public
@@ -36,7 +36,7 @@ class ZsibbotPickerViewPresenter: UITextField {
         }
     }
     
-    var selectButtonAction: (() -> Void)?
+    var doneButtonAction: (() -> Void)?
     
     var currentlySelectedRow: Int {
         return pickerView.selectedRow(inComponent: 0)
@@ -58,17 +58,30 @@ class ZsibbotPickerViewPresenter: UITextField {
     
     private let pickerView = UIPickerView(frame: CGRect.zero)
     
-    private lazy var pickerInputAccessoryView: UIView = {
-        let frame = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 48.0)
-        let pickerInputAccessoryView = UIView(frame: frame)
+    private lazy var toolBar: UIToolbar = {
+        let res = UIToolbar()
+        res.barStyle = .default
+        res.isTranslucent = true
+        res.tintColor = self.tintColor
+        res.sizeToFit()
         
-        // Customize the view here
         
-        return pickerInputAccessoryView
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.canceledPicker))
+        
+        res.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        res.isUserInteractionEnabled = true
+        return res
     }()
     
-    func selectButtonPressed(sender: UIButton) {
-        selectButtonAction?()
+    func donePicker() {
+        doneButtonAction?();
+        self.resignFirstResponder()
+    }
+    
+    func canceledPicker() {
+        self.resignFirstResponder()
     }
     
 }
