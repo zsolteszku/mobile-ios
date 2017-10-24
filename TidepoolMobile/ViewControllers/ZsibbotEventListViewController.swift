@@ -116,9 +116,28 @@ extension ZsibbotEventListViewController: UIPickerViewDataSource, UIPickerViewDe
             }
             switch(value) {
             case .Note: strongSelf.originalNavBarRightButtonHandler(sender)
+            case .MealType: strongSelf.navigateToMealType()
             default:
                 fatalError("ZsibbotEventType(\(value.rawValue) View is not yet implemented.")
             }
         }
     }
+    
+    func navigateToMealType() {
+        if APIConnector.connector().alertIfNetworkIsUnreachable() {
+            return
+        }
+        let viewController:ZsibbotMealTypeAddEditViewController = UIStoryboard(name: "ZsibbotEvents", bundle: nil).instantiateViewController(withIdentifier: "MealTypeAddEdit") as! ZsibbotMealTypeAddEditViewController
+        // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+        
+        viewController.isAddNote = true
+        viewController.user = dataController.currentLoggedInUser!
+        viewController.group = dataController.currentViewedUser!
+        
+        self.present(viewController, animated: true, completion: nil)
+        if !firstTimeAddNoteTip.isHidden {
+            firstTimeAddNoteTip.isHidden = true
+        }
+    }
 }
+
