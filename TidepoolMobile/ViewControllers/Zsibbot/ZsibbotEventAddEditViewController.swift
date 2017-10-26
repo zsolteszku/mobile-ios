@@ -1,18 +1,24 @@
 //
-//  ZsibbotMealTypeAddEditTableViewController.swift
+//  ZsibbotEventAddEditViewController.swift
 //  TidepoolMobile
 //
-//  Created by Zsolt Essig on 23/10/2017.
+//  Created by Zsolt Essig on 25/10/2017.
 //  Copyright © 2017 Tidepool. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class ZsibbotMealTypeAddEditViewController: EventAddEditViewController {
+class ZsibbotEventAddEditViewController: EventAddEditViewController {
+    
+    var eventName: String {
+        get {
+            return "Event Type"
+        }
+    }
     
     override func configureTitleView() {
-        self.navItem.title = isAddNote ? "Add Meal Type" : "Edit Meal Type"
+        self.navItem.title = isAddNote ? "Add \(eventName)" : "Edit \(eventName)"
     }
     
     func removeHashTagScrollView() {
@@ -46,5 +52,3 @@ class ZsibbotMealTypeAddEditViewController: EventAddEditViewController {
         messageBox.isEditable = false
     }
 }
-
-
