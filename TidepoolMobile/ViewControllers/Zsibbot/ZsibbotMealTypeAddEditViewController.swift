@@ -9,11 +9,22 @@
 import Foundation
 import UIKit
 
-class ZsibbotMealTypeAddEditViewController: ZsibbotEventAddEditViewController {
+class ZsibbotMealTypeAddEditViewController: ZsibbotEventAddEditViewController, UITextFieldDelegate {
     override var eventName: String {
         get {
             return "Meal Type"
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if(subviewsInitialized) {
+            return
+        }
+        super.viewDidLayoutSubviews()
+        let label = addLabel(afterView: separatorOne, text: "Name")
+        let _ = addUITextField(afterView: separatorOne, delegate: self)
+        
+        recalcMessageBox(lastSubView: label)
     }
 }
 

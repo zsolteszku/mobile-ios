@@ -112,7 +112,7 @@ class EventAddEditViewController: BaseUIViewController, UITextViewDelegate {
     }
     
     // delay manual layout until we know actual size of container view (at viewDidLoad it will be the current storyboard size)
-    private var subviewsInitialized = false
+    var subviewsInitialized = false
     override func viewDidLayoutSubviews() {
         let frame = self.sceneContainerView.frame
         NSLog("viewDidLayoutSubviews: \(frame)")

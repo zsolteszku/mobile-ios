@@ -102,6 +102,7 @@
 		039010621F9EFB1600290B14 /* ZsibbotEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039010601F9EFB1600290B14 /* ZsibbotEvents.storyboard */; };
 		039010651F9EFF3A00290B14 /* ZsibbotMealTypeAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039010641F9EFF3A00290B14 /* ZsibbotMealTypeAddEditViewController.swift */; };
 		039010671FA1A45F00290B14 /* ZsibbotEventAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039010661FA1A45F00290B14 /* ZsibbotEventAddEditViewController.swift */; };
+		0390106B1FA2F7BA00290B14 /* ZsibbotViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390106A1FA2F7BA00290B14 /* ZsibbotViewHelper.swift */; };
 		44FEA4373EF916C512BCB4A9 /* Pods_TidepoolMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E01F39B16D04096A03DBC5 /* Pods_TidepoolMobileTests.framework */; };
 		4806E33A1E995A350024A497 /* TPMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4806E3391E995A350024A497 /* TPMenuButton.swift */; };
 		4806E33C1E99621D0024A497 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4806E33B1E99621D0024A497 /* UIViewExtension.swift */; };
@@ -299,12 +300,13 @@
 		0334CAA61BA8E22E00013096 /* Bolus+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bolus+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0334CAA71BA8E22E00013096 /* Bolus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bolus.swift; sourceTree = "<group>"; };
 		039010561F9DA5E000290B14 /* ZsibbotEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZsibbotEventListViewController.swift; sourceTree = "<group>"; };
-		039010581F9DA62400290B14 /* ZsibbotPickerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZsibbotPickerViewPresenter.swift; path = ViewControllers/Views/ZsibbotPickerViewPresenter.swift; sourceTree = "<group>"; };
+		039010581F9DA62400290B14 /* ZsibbotPickerViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZsibbotPickerViewPresenter.swift; sourceTree = "<group>"; };
 		0390105C1F9DA9DE00290B14 /* ZsibbotNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZsibbotNSObject.swift; path = "Utilities and Extensions/ZsibbotNSObject.swift"; sourceTree = "<group>"; };
 		0390105E1F9DCC6D00290B14 /* ZsibbotUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZsibbotUIViewController.swift; path = "Utilities and Extensions/ZsibbotUIViewController.swift"; sourceTree = "<group>"; };
 		039010611F9EFB1600290B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ZsibbotEvents.storyboard; sourceTree = "<group>"; };
 		039010641F9EFF3A00290B14 /* ZsibbotMealTypeAddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZsibbotMealTypeAddEditViewController.swift; sourceTree = "<group>"; };
 		039010661FA1A45F00290B14 /* ZsibbotEventAddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZsibbotEventAddEditViewController.swift; sourceTree = "<group>"; };
+		0390106A1FA2F7BA00290B14 /* ZsibbotViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZsibbotViewHelper.swift; sourceTree = "<group>"; };
 		051696D064798F77DCBEE20E /* Pods_TidepoolMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TidepoolMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		063572F169F60C9A48179678 /* Pods-TidepoolMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TidepoolMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-TidepoolMobile/Pods-TidepoolMobile.release.xcconfig"; sourceTree = "<group>"; };
 		1B3B50F29FA991E2FE17110B /* Pods-TidepoolMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TidepoolMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TidepoolMobile/Pods-TidepoolMobile.debug.xcconfig"; sourceTree = "<group>"; };
@@ -532,6 +534,16 @@
 			);
 			name = Zsibbot;
 			path = ViewControllers/Zsibbot;
+			sourceTree = "<group>";
+		};
+		039010691FA2F77C00290B14 /* Zsibbot */ = {
+			isa = PBXGroup;
+			children = (
+				039010581F9DA62400290B14 /* ZsibbotPickerViewPresenter.swift */,
+				0390106A1FA2F7BA00290B14 /* ZsibbotViewHelper.swift */,
+			);
+			name = Zsibbot;
+			path = ViewControllers/Views/Zsibbot;
 			sourceTree = "<group>";
 		};
 		0B896CBEA8D0BFD3140D313E /* Frameworks */ = {
@@ -767,6 +779,7 @@
 		488E44E41E831CCF00A17AD7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				039010691FA2F77C00290B14 /* Zsibbot */,
 				488E44DE1E831CC100A17AD7 /* HashtagBolder.swift */,
 				488E44DF1E831CC100A17AD7 /* HashtagsScrollView.swift */,
 				488E44E01E831CC100A17AD7 /* HashtagsView.swift */,
@@ -774,7 +787,6 @@
 				482971F81EB2655C00E171DF /* TPIntrinsicSizeUIView.swift */,
 				48E5C2101EB2D17100D5923A /* TPUIButton.swift */,
 				4806E3391E995A350024A497 /* TPMenuButton.swift */,
-				039010581F9DA62400290B14 /* ZsibbotPickerViewPresenter.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1153,6 +1165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0390106B1FA2F7BA00290B14 /* ZsibbotViewHelper.swift in Sources */,
 				48867CF91E81A4BB00C4E79D /* BlipPatient.swift in Sources */,
 				0334CA4C1BA8DDFC00013096 /* GrabBag+CoreDataProperties.swift in Sources */,
 				0334CA1F1BA8DDFC00013096 /* Basal+CoreDataProperties.swift in Sources */,
